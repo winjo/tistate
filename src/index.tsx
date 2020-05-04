@@ -14,7 +14,6 @@ interface Dispatcher<S = any> {
 
 function createDispatcher<S = any>(state?: S): Dispatcher<S> {
   let handlers: Handler[] = []
-
   return {
     on(handler) {
       handlers.push(handler)
