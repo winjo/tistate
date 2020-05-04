@@ -5,7 +5,7 @@
 ## Install
 
 ```sh
-npm install --save unstated-next
+npm install --save tistate
 ```
 
 ## Example

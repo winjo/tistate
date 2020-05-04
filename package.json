@@ -1,6 +1,6 @@
 {
   "name": "tistate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "react hooks state management",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -20,7 +20,10 @@
     "lint": "prettier --write --parser typescript \"src/**/*.ts?(x)\""
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "winjo",
+    "url": "https://github.com/winjo/tistate.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.1.0",
