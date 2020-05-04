@@ -16,7 +16,8 @@
     "type": "tsc --emitDeclarationOnly --declaration --declarationMap",
     "type-check": "tsc --noEmit",
     "test": "jest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "lint": "prettier --write --parser typescript \"src/**/*.{ts,tsx}\""
   },
   "keywords": [],
   "author": "",

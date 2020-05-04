@@ -21,15 +21,15 @@ function createDispatcher<S = any>(state?: S): Dispatcher<S> {
       return () => this.off(handler)
     },
     off(handler) {
-      handlers = handlers.filter(h => h !== handler)
+      handlers = handlers.filter((h) => h !== handler)
     },
     get() {
       return state
     },
     update(newState) {
       state = newState
-      handlers.forEach(handler => handler(newState))
-    }
+      handlers.forEach((handler) => handler(newState))
+    },
   }
 }
 
@@ -44,7 +44,7 @@ interface HolderComponent {
   <S, V = undefined>(props: HolderProps<S, V>): React.ReactElement
 }
 
-const Holder = React.memo<any>(
+const Holder = (React.memo<any>(
   (props: any) => {
     const { hook, dispatcher, initialValue } = props
     const firstRender = useRef(true)
@@ -71,25 +71,35 @@ const Holder = React.memo<any>(
     return null
   },
   (prevProps, nextProps) => prevProps.initialValue !== nextProps.initialValue
-) as unknown as HolderComponent
+) as unknown) as HolderComponent
 
 Holder.displayName = 'Holder'
 
 export interface Container<S, V> {
   Provider: React.FC<unknown extends V ? {} : { initialValue: V }>
   useContainer(): S
-  useContainer<U>(selector: (state: S) => U, isEqual?: (s1: S, s2: S) => boolean): U
+  useContainer<U>(
+    selector: (state: S) => U,
+    isEqual?: (s1: S, s2: S) => boolean
+  ): U
 }
 
 export interface Container1<S, V> {
   Provider: React.FC<{ initialValue?: V }>
   useContainer(): S
-  useContainer<U>(selector: (state: S) => U, isEqual?: (s1: S, s2: S) => boolean): U
+  useContainer<U>(
+    selector: (state: S) => U,
+    isEqual?: (s1: S, s2: S) => boolean
+  ): U
 }
 
 export function createContainer<S, V>(useHook: () => S): Container<S, V>
-export function createContainer<S, V>(useHook: (initialValue: V) => S): Container<S, V>
-export function createContainer<S, V>(useHook: (initialValue?: V) => S): Container<S, V> {
+export function createContainer<S, V>(
+  useHook: (initialValue: V) => S
+): Container<S, V>
+export function createContainer<S, V>(
+  useHook: (initialValue?: V) => S
+): Container<S, V> {
   const Context = React.createContext<Dispatcher | null>(null)
 
   const dispatcher = createDispatcher<S>()!
@@ -97,10 +107,12 @@ export function createContainer<S, V>(useHook: (initialValue?: V) => S): Contain
   const Provider: React.FC<any> = ({ initialValue, children }) => {
     return (
       <>
-        <Holder hook={useHook} dispatcher={dispatcher} initialValue={initialValue} />
-        <Context.Provider value={dispatcher}>
-          {children}
-        </Context.Provider>
+        <Holder
+          hook={useHook}
+          dispatcher={dispatcher}
+          initialValue={initialValue}
+        />
+        <Context.Provider value={dispatcher}>{children}</Context.Provider>
       </>
     )
   }
@@ -109,8 +121,8 @@ export function createContainer<S, V>(useHook: (initialValue?: V) => S): Contain
     const dispatcher = useContext(Context)
 
     if (dispatcher === null) {
-			throw new Error("Component must be wrapped with <Provider>")
-		}
+      throw new Error('[tistate]: Component must be wrapped with <Provider>')
+    }
 
     const lastSelector = useRef(selector)
     lastSelector.current = selector
