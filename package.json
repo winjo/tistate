@@ -1,6 +1,6 @@
 {
   "name": "tistate",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "react hooks state management",
   "main": "dist/tistate.cjs.js",
   "module": "dist/tistate.mjs.js",
