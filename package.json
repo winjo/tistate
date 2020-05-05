@@ -6,6 +6,11 @@
   "module": "dist/tistate.mjs.js",
   "unpkg": "dist/tistate.umd.js",
   "typings": "dist/index.d.ts",
+  "homepage": "https://github.com/winjo/tistate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/winjo/tistate.git"
+  },
   "scripts": {
     "example": "parcel example/index.html --out-dir example/dist",
     "clean": "rimraf dist",

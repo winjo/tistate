@@ -1,6 +1,6 @@
 # tistate
 
-> React state management width hooks
+> React state management with hooks
 
 ## Install
 
