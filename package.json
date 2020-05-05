@@ -2,10 +2,10 @@
   "name": "tistate",
   "version": "0.2.0",
   "description": "react hooks state management",
-  "main": "lib/index.js",
-  "module": "esm/index.js",
-  "unpkg": "dist/index.js",
-  "typings": "esm/index.d.ts",
+  "main": "dist/tistate.cjs.js",
+  "module": "dist/tistate.mjs.js",
+  "unpkg": "dist/tistate.umd.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "example": "parcel example/index.html --out-dir example/dist",
     "clean": "rimraf dist",
@@ -22,7 +22,7 @@
   "keywords": [],
   "author": {
     "name": "winjo",
-    "url": "https://github.com/winjo/tistate.git"
+    "url": "https://github.com/winjo"
   },
   "license": "MIT",
   "devDependencies": {

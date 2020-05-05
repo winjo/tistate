@@ -47,6 +47,7 @@ const Holder = (React.memo<any>(
   (props: any) => {
     const { hook, dispatcher, initialValue } = props
     const firstRender = useRef(true)
+    const initialized = useRef(false)
 
     let data: any
     try {
@@ -55,7 +56,8 @@ const Holder = (React.memo<any>(
       console.error('[tistate]: invoke hooks failed', err)
     }
 
-    if (firstRender.current) {
+    if (!initialized.current) {
+      initialized.current = true
       dispatcher.update(data)
     }
 
