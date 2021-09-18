@@ -1,0 +1,9 @@
+node_modules
+*.log
+example/dist
+.rts2_cache_*
+.cache
+.DS_Store
+dist
+lib
+esm

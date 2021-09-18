@@ -1,0 +1,74 @@
+{
+  "name": "tistate",
+  "version": "0.3.1",
+  "description": "react hooks state management",
+  "main": "dist/tistate.cjs.js",
+  "module": "dist/tistate.mjs.js",
+  "unpkg": "dist/tistate.umd.js",
+  "typings": "dist/index.d.ts",
+  "homepage": "https://github.com/winjo/tistate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/winjo/tistate.git"
+  },
+  "scripts": {
+    "example": "parcel example/index.html --out-dir example/dist",
+    "clean": "rimraf dist",
+    "build": "run-s type build:cjs build:esm build:umd",
+    "build:cjs": "rollup -m -i src/index.tsx -o dist/tistate.cjs.js -f cjs -p typescript2 -e react,shallowequal",
+    "build:esm": "rollup -m -i src/index.tsx -o dist/tistate.mjs.js -f es -p typescript2 -e react,shallowequal",
+    "build:umd": "rollup -m -i src/index.tsx -o dist/tistate.umd.js -f umd -p typescript2,commonjs,node-resolve -n TiState -e react -g react:React",
+    "type": "tsc --emitDeclarationOnly --declaration --declarationMap",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "prepublishOnly": "npm run build",
+    "lint": "prettier --write --parser typescript \"src/**/*.ts?(x)\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "winjo",
+    "url": "https://github.com/winjo"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.1.0",
+    "@rollup/plugin-node-resolve": "^7.1.3",
+    "@testing-library/react": "^10.0.4",
+    "@types/jest": "^25.2.1",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "@types/shallowequal": "^1.1.1",
+    "husky": "^4.2.5",
+    "jest": "^25.5.4",
+    "lint-staged": "^10.2.2",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^1.12.4",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.7.6",
+    "rollup-plugin-typescript2": "^0.27.0",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "shallowequal": "^1.1.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "files": [
+    "dist"
+  ]
+}
